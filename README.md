@@ -23,7 +23,7 @@ Multi-class classification of X-ray images into **four disease classes**.
 - **Class imbalance:** class weights and data augmentation (Albumentations).
 - **Result:** about **89 % test accuracy**.
 - **Technologies:** TensorFlow / Keras, Albumentations, OpenCV, NumPy, SHAP.
-- 📓 [`ML Hyperparameter Tuning.ipynb`](ML%20Hyperparameter%20Tuning.ipynb)
+- 📓 [`ML Lung Disease Classification.ipynb`](ML%20Lung%20Disease%20Classification.ipynb)
 
 ### 3. Disease Categorisation (NLP)
 NLP pipeline that assigns unstructured medical texts to **five disease categories**.
@@ -31,7 +31,7 @@ NLP pipeline that assigns unstructured medical texts to **five disease categorie
 - **Approach:** domain-specific language model (**Bio_ClinicalBERT**) for fine-tuning and feature extraction, combined with a stacking ensemble (XGBoost / logistic regression).
 - **Class imbalance:** SMOTE and class weights; hyperparameter optimisation with Optuna, model interpretation with SHAP.
 - **Technologies:** PyTorch, Hugging Face Transformers, scikit-learn, XGBoost, Optuna, SHAP.
-- 📓 [`NLP Disease Categorisation.ipynb`](NLP%20Disease%20Categorisation.ipynb)
+- 📓 [`NLP Kategorisierung Krankheit.ipynb`](NLP%20Kategorisierung%20Krankheit.ipynb)
 
 ### 4. Electricity Price Forecasting
 Forecasting hourly electricity prices from historical energy and weather data.
@@ -40,7 +40,7 @@ Forecasting hourly electricity prices from historical energy and weather data.
 - **Approach:** comparison of two deep learning architectures (**LSTM vs. GRU**) with early stopping.
 - **Result:** the LSTM produced more accurate forecasts (R² ≈ 0.44, MAE ≈ 5.2) than the GRU (R² ≈ 0.16, MAE ≈ 6.5).
 - **Technologies:** PyTorch, statsmodels (ARIMA), scikit-learn, Pandas, Matplotlib.
-- 📓 [`DL Electricity Price Forecasting.ipynb`](DL%20Electricity%20Price%20Forecasting.ipynb)
+- 📓 [`DL Vorhersage von Strompreisen.ipynb`](DL%20Vorhersage%20von%20Strompreisen.ipynb)
 
 ---
 
