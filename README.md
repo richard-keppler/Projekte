@@ -1,47 +1,68 @@
-# Machine Learning, Deep Learning & NLP – Projekte
+# Machine Learning, Deep Learning, NLP & ML Engineering – Projects
 
-Dieses Repository bündelt mehrere Projekte aus den Bereichen **Machine Learning, Deep Learning und Natural Language Processing**, die im Rahmen meines M.Sc.-Studiums *Angewandte Künstliche Intelligenz* entstanden sind. Schwerpunkte sind medizinische Bild- und Textklassifikation sowie Zeitreihen-Prognose.
+This repository collects projects from my M.Sc. studies in *Applied Artificial Intelligence* and my Machine Learning Engineering training. They cover medical image and text classification, time-series forecasting, data pipelines and putting ML code into production-ready shape.
 
-**Verwendete Technologien:** Python · TensorFlow / Keras · PyTorch · Hugging Face Transformers · scikit-learn · XGBoost · Optuna · Pandas / NumPy · Matplotlib / Seaborn
+**Technologies:** Python · TensorFlow / Keras · PyTorch · Hugging Face Transformers · scikit-learn · XGBoost · Optuna · SHAP · Pandas / NumPy · SQL / DuckDB · Prefect · FastAPI · SQLAlchemy · PostgreSQL · Docker · pytest · uv
 
 ---
 
-## Projektübersicht
+## Machine Learning & Deep Learning
 
 ### 1. Pneumonia Detection
-Binäre Klassifikation von Röntgen-Thoraxaufnahmen (*Normal* vs. *Pneumonie*).
+Binary classification of chest X-rays (*normal* vs. *pneumonia*).
 
-- **Ansatz:** Selbst entwickeltes CNN mit vier Convolutional-Blöcken, Dropout und Early Stopping.
-- **Datenpipeline:** Normalisierung der Pixelwerte sowie Datenaugmentierung (Flip, Rotation).
-- **Technologien:** TensorFlow / Keras, NumPy, Matplotlib.
+- **Approach:** custom CNN with four convolutional blocks, dropout and early stopping.
+- **Data pipeline:** pixel normalisation and data augmentation (flip, rotation).
+- **Technologies:** TensorFlow / Keras, NumPy, Matplotlib.
 - 📄 [`ML Pneumonia Detection.py`](ML%20Pneumonia%20Detection.py)
 
-### 2. Klassifikation von Lungenerkrankungen
-Mehrklassen-Klassifikation von Röntgenbildern in **vier Krankheitsbilder**.
+### 2. Lung Disease Classification
+Multi-class classification of X-ray images into **four disease classes**.
 
-- **Ansatz:** CNN-LSTM-Hybridmodell mit systematischem Hyperparameter-Tuning.
-- **Umgang mit unausgewogenen Klassen:** Class Weights und Datenaugmentierung (Albumentations).
-- **Ergebnis:** rund **89 % Test-Genauigkeit**.
-- **Technologien:** TensorFlow / Keras, Albumentations, OpenCV, NumPy, SHAP.
+- **Approach:** CNN-LSTM hybrid model with systematic hyperparameter tuning.
+- **Class imbalance:** class weights and data augmentation (Albumentations).
+- **Result:** about **89 % test accuracy**.
+- **Technologies:** TensorFlow / Keras, Albumentations, OpenCV, NumPy, SHAP.
 - 📓 [`ML Hyperparameter Tuning.ipynb`](ML%20Hyperparameter%20Tuning.ipynb)
 
-### 3. Kategorisierung von Krankheiten
-NLP-Pipeline zur automatischen Kategorisierung unstrukturierter medizinischer Texte in **fünf Krankheitskategorien**.
+### 3. Disease Categorisation (NLP)
+NLP pipeline that assigns unstructured medical texts to **five disease categories**.
 
-- **Ansatz:** Domänenspezifisches Sprachmodell (**Bio_ClinicalBERT**) für Fine-Tuning und Feature-Extraktion, kombiniert mit einem Stacking-Ensemble (XGBoost / Logistic Regression).
-- **Umgang mit unausgewogenen Klassen:** SMOTE und Class Weights; Hyperparameter-Optimierung mit Optuna, Modellinterpretation mit SHAP.
-- **Technologien:** PyTorch, Hugging Face Transformers, scikit-learn, XGBoost, Optuna, SHAP.
+- **Approach:** domain-specific language model (**Bio_ClinicalBERT**) for fine-tuning and feature extraction, combined with a stacking ensemble (XGBoost / logistic regression).
+- **Class imbalance:** SMOTE and class weights; hyperparameter optimisation with Optuna, model interpretation with SHAP.
+- **Technologies:** PyTorch, Hugging Face Transformers, scikit-learn, XGBoost, Optuna, SHAP.
 - 📓 [`NLP Kategorisierung Krankheit.ipynb`](NLP%20Kategorisierung%20Krankheit.ipynb)
 
-### 4. Strompreis-Vorhersage
-Prognose stündlicher Strompreise auf Basis historischer Energie- und Wetterdaten.
+### 4. Electricity Price Forecasting
+Forecasting hourly electricity prices from historical energy and weather data.
 
-- **Datenaufbereitung:** Zusammenführung von Energie- und Wetter-Zeitreihen, ARIMA-basierte Imputation fehlender Werte, Sequenzbildung und MinMax-Skalierung.
-- **Ansatz:** Vergleich zweier Deep-Learning-Architekturen (**LSTM vs. GRU**) mit Early Stopping.
-- **Ergebnis:** Das LSTM lieferte die genaueren Prognosen (R² ≈ 0,44, MAE ≈ 5,2) gegenüber dem GRU (R² ≈ 0,16, MAE ≈ 6,5).
-- **Technologien:** PyTorch, statsmodels (ARIMA), scikit-learn, Pandas, Matplotlib.
+- **Data preparation:** merging energy and weather time series, ARIMA-based imputation of missing values, sequence generation and min-max scaling.
+- **Approach:** comparison of two deep learning architectures (**LSTM vs. GRU**) with early stopping.
+- **Result:** the LSTM produced more accurate forecasts (R² ≈ 0.44, MAE ≈ 5.2) than the GRU (R² ≈ 0.16, MAE ≈ 6.5).
+- **Technologies:** PyTorch, statsmodels (ARIMA), scikit-learn, Pandas, Matplotlib.
 - 📓 [`DL Vorhersage von Strompreisen.ipynb`](DL%20Vorhersage%20von%20Strompreisen.ipynb)
 
 ---
 
-*Die Projekte dienen der praktischen Vertiefung im Studium und sind bewusst als eigenständige Fallstudien angelegt.*
+## Data & ML Engineering
+
+### 5. NYC Taxi Revenue Pipeline (ELT)
+Local ELT pipeline that downloads three months of NYC Green Taxi trip data (≈ 146,000 trips), loads it unchanged into DuckDB and calculates the daily revenue with SQL.
+
+- **Approach:** separate extract, load and transform modules, a pipeline entry point and the same steps orchestrated as a **Prefect** flow.
+- **Data quality:** documented cleaning rules based on the official data dictionary (refunds, disputes, out-of-period trips); idempotent steps.
+- **Testing:** pytest tests with a synthetic DuckDB table covering every filter rule and idempotency.
+- **Technologies:** Python, SQL, DuckDB, Prefect, pytest, uv.
+- 📁 [`data-pipeline/`](data-pipeline/)
+
+### 6. House Price Data – Refactoring & CRUD API
+Refactoring of a monolithic data science notebook (King County house sales) into reusable code, plus a REST service.
+
+- **Refactoring:** cleaning and feature engineering (incl. geo-distance features) extracted into side-effect-free functions and pipelines.
+- **API:** FastAPI CRUD service with Pydantic validation, SQLAlchemy 2.0 ORM and PostgreSQL running in Docker.
+- **Technologies:** Pandas, NumPy, FastAPI, Pydantic, SQLAlchemy, PostgreSQL, Docker.
+- 📁 [`house-price-refactoring/`](house-price-refactoring/)
+
+---
+
+*The projects are self-contained case studies that deepen the practical side of my studies and training.*
