@@ -1,0 +1,39 @@
+artifact_path: mlflow-artifacts:/2/models/m-58bd4051a1c4447eb0d7a10fc49234b1/artifacts
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.skops
+    predict_fn: predict
+    python_version: 3.13.18
+  sklearn:
+    code: null
+    pickled_model: model.skops
+    serialization_format: skops
+    sklearn_version: 1.9.1
+    skops_trusted_types:
+    - sklearn.tree._tree.Tree
+is_signature_from_type_hint: false
+mlflow_version: 3.17.2
+model_id: m-58bd4051a1c4447eb0d7a10fc49234b1
+model_size_bytes: 6816173
+model_uuid: m-58bd4051a1c4447eb0d7a10fc49234b1
+prompts: null
+run_id: e1f1e1f700d4429fbbf6a03c8ab8475c
+saved_input_example_info:
+  artifact_path: input_example.json
+  pandas_orient: split
+  serving_input_path: serving_input_example.json
+  type: dataframe
+signature:
+  inputs: '[{"type": "integer", "name": "PULocationID", "required": true}, {"type":
+    "integer", "name": "DOLocationID", "required": true}, {"type": "double", "name":
+    "trip_distance", "required": true}, {"type": "integer", "name": "pickup_hour",
+    "required": true}, {"type": "integer", "name": "pickup_dayofweek", "required":
+    true}]'
+  outputs: '[{"type": "double", "required": true}]'
+  params: null
+type_hint_from_example: false
+utc_time_created: '2026-11-17 16:07:04.698088'

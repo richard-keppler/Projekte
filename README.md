@@ -2,7 +2,7 @@
 
 This repository collects projects from my M.Sc. studies in *Applied Artificial Intelligence* and my Machine Learning Engineering training. They cover medical image and text classification, time-series forecasting, data pipelines and putting ML code into production-ready shape.
 
-**Technologies:** Python · TensorFlow / Keras · PyTorch · Hugging Face Transformers · scikit-learn · XGBoost · Optuna · SHAP · Pandas / NumPy · SQL / DuckDB · Prefect · FastAPI · SQLAlchemy · PostgreSQL · Docker · pytest · uv
+**Technologies:** Python · TensorFlow / Keras · PyTorch · Hugging Face Transformers · scikit-learn · XGBoost · Optuna · SHAP · Pandas / NumPy · SQL / DuckDB · Prefect · MLflow · FastAPI · SQLAlchemy · PostgreSQL · Docker · Render · pytest · uv
 
 ---
 
@@ -62,6 +62,16 @@ Refactoring of a monolithic data science notebook (King County house sales) into
 - **API:** FastAPI CRUD service with Pydantic validation, SQLAlchemy 2.0 ORM and PostgreSQL running in Docker.
 - **Technologies:** Pandas, NumPy, FastAPI, Pydantic, SQLAlchemy, PostgreSQL, Docker.
 - 📁 [`house-price-refactoring/`](house-price-refactoring/)
+
+### 7. NYC Taxi Trip Duration – Training, Tracking & Deployment
+End-to-end ML project that predicts the duration of NYC Yellow Taxi trips (January 2025, ≈ 3.2M trips) and serves the model as a public API.
+
+- **Approach:** Random Forest with a mean baseline, experiment tracking with MLflow and hyperparameter tuning with Optuna (trials as nested MLflow runs).
+- **Serving:** FastAPI `/predict` endpoint with Pydantic validation; the same feature function is used in training and serving.
+- **Deployment:** Docker image deployed on Render, with a [live demo](https://taxi-duration-api.onrender.com/docs).
+- **Result:** test RMSE of **4.39 minutes** (baseline 9.77, −55 %). Optuna reached 4.06, but the model was 17× larger, so the smaller model was kept in production.
+- **Technologies:** scikit-learn, MLflow, Optuna, FastAPI, Pydantic, Docker, Render, uv.
+- 📁 [`taxi-duration-deployment/`](taxi-duration-deployment/)
 
 ---
 
