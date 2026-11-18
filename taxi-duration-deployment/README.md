@@ -3,6 +3,7 @@
 An end-to-end ML project: a model that predicts the duration of NYC Yellow Taxi trips is trained on
 ~3.2 million trips, tracked and tuned with **MLflow** and **Optuna**, served through a **FastAPI**
 service, packaged with **Docker** and deployed publicly on **Render**.
+Built as part of my Machine Learning Engineering training.
 
 **Skills shown:** end-to-end ML workflow · experiment tracking (MLflow) · hyperparameter tuning (Optuna) ·
 REST API with input validation (FastAPI, Pydantic) · containerisation (Docker) · cloud deployment (Render) ·
@@ -28,7 +29,8 @@ curl -X POST https://taxi-duration-api.onrender.com/predict \
   -d '{"PULocationID": 142, "DOLocationID": 236, "trip_distance": 3.2, "tpep_pickup_datetime": "2025-01-10T08:00:00"}'
 ```
 
-Response: `{"predicted_duration_minutes": <minutes>}`. Invalid input (e.g. an unknown zone ID) returns HTTP `422`.
+The response contains the predicted duration in minutes, e.g. `{"predicted_duration_minutes": 13.9}`.
+Invalid input (e.g. an unknown zone ID or a negative distance) returns HTTP `422` with a description of the problem.
 
 ## Results
 

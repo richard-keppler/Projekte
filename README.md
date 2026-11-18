@@ -1,8 +1,20 @@
 # Machine Learning, Deep Learning, NLP & ML Engineering – Projects
 
-This repository collects projects from my M.Sc. studies in *Applied Artificial Intelligence* and my Machine Learning Engineering training. They cover medical image and text classification, time-series forecasting, data pipelines and putting ML code into production-ready shape.
+This repository collects projects from my M.Sc. studies in *Applied Artificial Intelligence* and my Machine Learning Engineering training. They cover medical image and text classification, time-series forecasting, data pipelines, putting ML code into production-ready shape and deploying models as public APIs.
 
 **Technologies:** Python · TensorFlow / Keras · PyTorch · Hugging Face Transformers · scikit-learn · XGBoost · Optuna · SHAP · Pandas / NumPy · SQL / DuckDB · Prefect · MLflow · FastAPI · SQLAlchemy · PostgreSQL · Docker · Render · pytest · uv
+
+## Overview
+
+| # | Project | Area | Key technologies |
+|---|---|---|---|
+| 1 | [Pneumonia Detection](#1-pneumonia-detection) | Computer vision | TensorFlow / Keras, CNN |
+| 2 | [Lung Disease Classification](#2-lung-disease-classification) | Computer vision | CNN-LSTM, Albumentations, SHAP |
+| 3 | [Disease Categorisation](#3-disease-categorisation-nlp) | NLP | Bio_ClinicalBERT, XGBoost, Optuna |
+| 4 | [Electricity Price Forecasting](#4-electricity-price-forecasting) | Time series | PyTorch, LSTM / GRU, ARIMA |
+| 5 | [NYC Taxi Revenue Pipeline](#5-nyc-taxi-revenue-pipeline-elt) | Data engineering | DuckDB, SQL, Prefect, pytest |
+| 6 | [House Price Refactoring & CRUD API](#6-house-price-data--refactoring--crud-api) | ML engineering | FastAPI, SQLAlchemy, PostgreSQL, Docker |
+| 7 | [NYC Taxi Trip Duration](#7-nyc-taxi-trip-duration--training-tracking--deployment) | MLOps & deployment | MLflow, Optuna, FastAPI, Docker, Render · [live demo](https://taxi-duration-api.onrender.com/docs) |
 
 ---
 
